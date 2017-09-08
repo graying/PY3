@@ -6,10 +6,9 @@ Decay
 This example showcases a sinusoidal decay animation.
 """
 
-
-import numpy as np
-import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 def data_gen(t=0):
@@ -17,7 +16,7 @@ def data_gen(t=0):
     while cnt < 1000:
         cnt += 1
         t += 0.1
-        yield t, np.sin(2*np.pi*t) * np.exp(-t/10.)
+        yield t, np.sin(2 * np.pi * t) * np.exp(-t / 10.)
 
 
 def init():
@@ -27,6 +26,7 @@ def init():
     del ydata[:]
     line.set_data(xdata, ydata)
     return line,
+
 
 fig, ax = plt.subplots()
 line, = ax.plot([], [], lw=2)
@@ -42,11 +42,12 @@ def run(data):
     xmin, xmax = ax.get_xlim()
 
     if t >= xmax:
-        ax.set_xlim(xmin, 2*xmax)
+        ax.set_xlim(xmin, 2 * xmax)
         ax.figure.canvas.draw()
     line.set_data(xdata, ydata)
 
     return line,
+
 
 ani = animation.FuncAnimation(fig, run, data_gen, blit=False, interval=10,
                               repeat=False, init_func=init)
