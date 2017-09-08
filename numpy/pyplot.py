@@ -15,8 +15,8 @@ for X in x:
 plt.figure(1)
 
 # sub
-plt.subplot(211)    # why the number start from 211?
-plt.plot(x, y1)
+plt.subplot(211)  # why the number start from 121? because of it's 1x2 subplots, or it can be 2x2 with total 4 subplot
+plt.plot(x, y1, color='g')
 plt.subplot(212)
 plt.plot(x, y2, color='red')
 
@@ -24,4 +24,9 @@ plt.plot(x, y2, color='red')
 plt.figure(2)
 # plt.subplot(213)
 plt.plot(x, y3, color='orange')
+
+# xy is the position you want to annotated, xytext is the text position
+plt.annotate('the highest', xy=(10, 1000), xytext=(5, 1000),
+             arrowprops=dict(facecolor='black', shrink=0.5),
+             )
 plt.show()
