@@ -30,3 +30,4 @@ plt.annotate('the highest', xy=(10, 1000), xytext=(5, 1000),
              arrowprops=dict(facecolor='black', shrink=0.5),
              )
 plt.show()
+
