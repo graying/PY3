@@ -48,7 +48,7 @@ for i in range(10):
         codes1.append(Path.CLOSEPOLY)
         pos.append((0, 0))
         break
-    codes1.append(Path.LINETO)
+    codes1.append(Path.CURVE4)
 print(pos)
 print(codes1)
 path1 = Path(pos, codes1)
@@ -76,4 +76,21 @@ patch3 = patches.PathPatch(path3, facecolor='none', lw=2)
 ax3.set_xlim(0, 1)
 ax3.set_ylim(0, 1)
 ax3.add_patch(patch3)
+
+ax4 = fig.add_subplot(224)
+verts4 = [(10, 0),
+          (93, 88),
+          (20, 20),
+          (0, 90),
+          ]
+codes4 = [Path.MOVETO,
+          Path.LINETO,
+          Path.LINETO,
+          Path.LINETO]
+path4 = Path(verts4, codes4)
+patch4 = patches.PathPatch(path4, facecolor='none', edgecolor='orange', lw=1)
+ax4.add_patch(patch4)
+ax4.set_xlim(0, 100)
+ax4.set_ylim(0, 100)
+
 plt.show()
