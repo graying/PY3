@@ -78,6 +78,10 @@ ax3.set_ylim(0, 1)
 ax3.add_patch(patch3)
 
 ax4 = fig.add_subplot(224)
+x4 = np.arange(1, 100)
+ax4.plot(x4)
+
+
 verts4 = [(10, 0),
           (93, 88),
           (20, 20),
@@ -92,5 +96,6 @@ patch4 = patches.PathPatch(path4, facecolor='none', edgecolor='orange', lw=1)
 ax4.add_patch(patch4)
 ax4.set_xlim(0, 100)
 ax4.set_ylim(0, 100)
+
 
 plt.show()
