@@ -14,7 +14,9 @@ fig = plt.figure()
 fig.suptitle('bold figure suptitle', fontsize=14, fontweight='bold')
 
 ax = fig.add_subplot(111)
+ax.set_xlim(1,100)
+ax.set_ylim(1,100)
 fig.subplots_adjust(top=0.85)
 ax.set_title('axes title')
-
+ax.text(50, 50, "text on 50,50", fontsize=20)
 plt.show()
