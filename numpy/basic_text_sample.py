@@ -19,9 +19,6 @@ ax.set_xlim(1,100)
 ax.set_ylim(1,100)
 fig.subplots_adjust(top=0.85)
 ax.set_title('axes title')
-<<<<<<< HEAD
-ax.text(50, 50, "text on 50,50", fontsize=20)
-=======
 ax.set_xlabel('xlabel')
 ax.set_ylabel('ylabel')
 ax.set_xlim(0, 100)
@@ -34,6 +31,8 @@ text1 = ax.text(30, 80, 'boxed italics text in data coords',
 
 ax.text(50, 50, 'text at 50,50')
 
+ax.text(50, 50, "text on 50,50", fontsize=20)
+
 fig1 = plt.figure()
 ax1 = fig1.add_subplot(111)
 t = np.arange(0.0, 5.0, 0.01)
@@ -44,5 +43,4 @@ ax1.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
              )
 ax1.set_ylim(-2, 2)
 
->>>>>>> 1cb45b0cef48242d1f7d30edb7d657d7fe9f4e40
 plt.show()
