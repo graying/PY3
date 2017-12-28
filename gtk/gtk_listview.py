@@ -1,3 +1,5 @@
+'''ListBox is a layout container,
+just like Box or Grid'''
 import gi
 
 gi.require_version('Gtk', '3.0')
