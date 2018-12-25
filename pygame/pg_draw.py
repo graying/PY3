@@ -1,10 +1,15 @@
-import pygame, sys
+import pygame, sys, random
 from pygame.locals import *
 
 pygame.init()
 dis = pygame.display.set_mode((800,600))
 pygame.display.set_caption("Hello Pygamer...")
-pygame.draw.line(dis, (255,0,255), (0,0), (800,600), 4)
+def rndColor():
+    return (random.randint(0,255), random.randint(0,255), random.randint(0,255))
+
+dis.fill(rndColor())
+pygame.draw.line(dis, rndColor(), (0,0), (800,600), 4)
+pygame.draw.line(dis, rndColor(), (800,0), (0,600), 5)
 while True:
 	pygame.display.update()
 	for event in pygame.event.get():
