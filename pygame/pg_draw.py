@@ -4,6 +4,7 @@ from pygame.locals import *
 pygame.init()
 dis = pygame.display.set_mode((800,600))
 pygame.display.set_caption("Hello Pygamer...")
+
 def rndColor():
     return (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 
