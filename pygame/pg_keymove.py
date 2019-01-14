@@ -1,12 +1,11 @@
 import pygame
 
-pygame.init()
-
 # init main game window and set title
+pygame.init()
 dis_x = 800
-dis_y = 600
+dis_y = 480
 dis = pygame.display.set_mode((dis_x, dis_y))
-pygame.display.set_caption("PYGamer...")
+pygame.display.set_caption("PYGamer~ ESC to quit ...")
 
 
 # player class initial
@@ -77,9 +76,8 @@ def my_render():
     pygame.display.update()
 
 
+man = Player(368, 400, 64, 64)
 run = True
-man = Player(300, 400, 64, 64)
-
 while run:
     clock.tick(27)
 
@@ -89,7 +87,9 @@ while run:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_LEFT] and man.x > man.vel:
+    if keys[pygame.K_ESCAPE]:
+        run = False
+    elif keys[pygame.K_LEFT] and man.x > man.vel:
         man.x -= man.vel
         man.left = True
         man.right = False
