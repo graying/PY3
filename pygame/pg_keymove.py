@@ -40,18 +40,6 @@ class Player(object):
 
 clock = pygame.time.Clock()
 
-# x, y = 50, 350
-# width = 64
-# height = 64
-# vel = 3
-
-# isJump = False
-# jumpCount = 10
-#
-# left = False
-# right = False
-# walkCount = 0
-
 # load walk left right image from pics folder
 walkRight = []
 walkLeft = []
@@ -69,10 +57,11 @@ char = pygame.image.load('pics/standing.png')
 
 
 def my_render():
-    # global walkCount
+    # draw background
     dis.blit(bg, (0, 0))
-
+    # draw the character
     man.draw(dis)
+    # refresh the window content
     pygame.display.update()
 
 
