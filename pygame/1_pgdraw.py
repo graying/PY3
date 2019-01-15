@@ -1,7 +1,22 @@
 import sys
 
-import pygame
+import pygame as pg
 from colors import COLORS
+
+class Bar(object):
+    def __init__(self, color_index):
+        if color_index + 1 >= len(COLORS):
+            color_index = 0
+        self.colorIndex = color_index
+
+    def draw(self, my_win):
+        my_win.fill(pg.Color(COLORS[self.colorIndex]))
+
+    def next_color(self):
+        if self.colorIndex + 1 >= len(COLORS):
+            self.colorIndex = 0
+        else:
+            self.colorIndex += 1
 
 
 # return windows size defined from cmd line
@@ -12,7 +27,8 @@ def get_win_size():
         return int(sys.argv[1]), int(sys.argv[2])
 
 
-pygame.init()
+# init pg
+pg.init()
 
 # if winSize is not suitable then using default 800x600
 winSize = list(get_win_size())
@@ -20,34 +36,30 @@ if winSize[0] == 0 or winSize[1] == 0:
     print("parameters parsing error, using default size: 800x600")
     winSize[0] = 800
     winSize[1] = 600
-win = pygame.display.set_mode(winSize)
-pygame.display.set_caption("drawing... Press ESC to quit")
+win = pg.display.set_mode(winSize)
+pg.display.set_caption("drawing... Press ESC to quit")
 
-# graphical content render here
-colorIndex = 0
-maxColor = len(COLORS)
-color = pygame.Color(COLORS[colorIndex])
+# my Bar start with index color 100#
+myBar = Bar(100)
 
 
+# content render function, render windows only, no update
 def my_render():
-    win.fill(color)
-    pygame.display.update()
+    myBar.draw(win)
+    myBar.next_color()
 
-clock = pygame.time.Clock()
+
+clock = pg.time.Clock()
 run = True
 while run:
     clock.tick(24)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             run = False
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_ESCAPE]:
+    keys = pg.key.get_pressed()
+    if keys[pg.K_ESCAPE]:
         run = False
-    if colorIndex + 1 >= maxColor:
-        colorIndex = 0
-    else:
-        colorIndex += 1
-    color = pygame.Color(COLORS[colorIndex])
     my_render()
-pygame.quit()
+    pg.display.update()
+
+pg.quit()
