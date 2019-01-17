@@ -20,6 +20,19 @@ class Bar(object):
             self.colorIndex += 1
 
 
+class ColorName(object):
+    def __init__(self, color_index):
+        if color_index + 1 >= len(COLORS):
+            color_index = 0
+        self.color_index = color_index
+
+        self.color_name = COLORS[self.color_index]
+        self.text_img = my_font.render(self.color_name, True, (0,0,0))
+
+    def draw(self, my_win):
+        my_win.blit(self.text_img, (0, 0) )
+
+
 # return windows size defined from cmd line
 def get_win_size():
     if len(sys.argv) < 3:
@@ -42,18 +55,20 @@ pg.display.set_caption("drawing... Press ESC to quit")
 
 # my Bar start with index color 100#
 myBar = Bar(100)
+my_font = pg.font.Font(None, 48)
 
 
 # content render function, render windows only, no update
 def my_render():
     myBar.draw(win)
     myBar.next_color()
+    ColorName(myBar.colorIndex).draw(win)
 
 
 clock = pg.time.Clock()
 run = True
 while run:
-    clock.tick(24)
+    clock.tick(2)
     for event in pg.event.get():
         if event.type == pg.QUIT:
             run = False
