@@ -3,6 +3,7 @@ import sys
 import pygame as pg
 from colors import COLORS
 
+
 class Bar(object):
     def __init__(self, color_index):
         if color_index + 1 >= len(COLORS):
@@ -33,7 +34,7 @@ pg.init()
 # if winSize is not suitable then using default 800x600
 winSize = list(get_win_size())
 if winSize[0] == 0 or winSize[1] == 0:
-    print("parameters parsing error, using default size: 800x600")
+    print("usage: python 1_pgdraw.py x_size y_size, or will be using default size: 800 600")
     winSize[0] = 800
     winSize[1] = 600
 win = pg.display.set_mode(winSize)
