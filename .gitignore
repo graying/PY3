@@ -37,3 +37,5 @@ nosetests.xml
 
 #ipython files
 .ipynb_*
+#vscode configuration files
+.vscode/*
