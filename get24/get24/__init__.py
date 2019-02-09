@@ -15,7 +15,7 @@
 
 import os
 
-from flask import Flask
+from flask import Flask, redirect
 
 
 def create_app(test_config=None):
@@ -39,10 +39,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
+    # redirect '/' to '/input' page 127.0.0.1:5000-> 127.0.0.1:5000/input
+    @app.route('/')
     def hello():
-        return 'Hello, World!'
+        return redirect('/input')
 
     from . import input
     app.register_blueprint(input.bp)
