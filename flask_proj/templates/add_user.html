@@ -9,7 +9,6 @@
     </form>
 
     {% for user in users %}
-        <li>{{ user.id }} - {{ user.username }} - {{ user.email }}</li>
-        <li><a href="/profile/{{user.username}}">{{user.username}}</a></li>
+        <li>{{ user.id }} - <a href="/profile/{{user.username}}">{{user.username}}</a> - {{ user.email }}</li>
     {% endfor %}
 </body>
