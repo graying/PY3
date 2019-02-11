@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///flask_app.db"
+app.config["DEBUG"] = True
 db = SQLAlchemy(app)
 
 
@@ -22,7 +23,7 @@ class User(db.Model):
 @app.route('/')
 def index():
     users = User.query.all()
-    return render_template("add_user.html", users=users)
+    return render_template("index.html", users=users)
     # return "<h1 style='color: red'>hello flask...</h1>"
 
 @app.route('/profile/<username>')
