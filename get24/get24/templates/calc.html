@@ -5,18 +5,20 @@
     <title>Get24</title>
 </head>
 <body>
-    calc in /input page
+calculating result
+<h2>
     {% for num in nums %}
-        <br/>
-        {{ num }}
+    {{ num }}
     {% endfor %}
-    <br/>
-        <a href="/input">Re-input</a>
-        <button onclick="window.location.href='/'">Goback</button>
-    <br/>
-    {% for res in result %}
-        <br/>
-        {{ res }}
-    {% endfor %}
+
+</h2>
+<a href="/input">Re-input</a>
+<button onclick="window.location.href='/'">Goback</button>
+<br/>
+{% for res in result %}
+<br/>
+{{ res }}
+{% endfor %}
+
 </body>
 </html>
