@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_PROJ</title>
+</head>
+<body>
+    <div class="container">
+        <h1>this is AD banner in 2_porj base.html</h1>
+    </div>
+        {% block main_content %}
+        {% endblock %}
+        <br/>
+        {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+</body>
+</html>
