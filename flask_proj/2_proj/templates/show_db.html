@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h2>/Show_db 2_Proj in index.html</h2>
+{% for post in posts %}
+<strong> Title:</strong> {{ post.title }} <br/>
+<strong> Description:</strong> {{ post.description }} <br/>
+{% endfor %}
+{% endblock %}
