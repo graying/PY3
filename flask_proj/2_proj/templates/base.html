@@ -5,17 +5,32 @@
     <title>2_PROJ</title>
 </head>
 <body>
-    <a href="/show_db">show_db<a/>
-    <br/>
-    <a href="/">home<a/>
-    <div class="container">
-        <h1>this is AD banner in 2_porj base.html</h1>
+<div id="container" style="background-color:white">
+    <div id="header">
+        <table>
+            <tr>
+                <td>
+                    <img src="static/img/rockman.png" width="48" height="48"/>
+                    <strong>this is AD banner in base.html</strong>
+                </td>
+            </tr>
+        </table>
     </div>
-        {% block main_content %}
-        {% endblock %}
-        <br/>
+    <div id="menu" style="background-color:gray;height:700px;width:120px;float:left;">
+        <p><a href="/show_db">show_db<a/></p>
+        <p><a href="/">home<a/></p>
+    </div>
+    <!--    <div id="container" style="background-color:white;height:700px;width:824px;float:left;">
+        </div>
+    -->
+    {% block main_content %}
+    {% endblock %}
+
+    <div id="footer" style="background-color:cyan;text-align:center;">
         {% for message in get_flashed_messages() %}
-            {{ message }}
+        {{ message }}
         {% endfor %}
+    </div>
+</div>
 </body>
 </html>

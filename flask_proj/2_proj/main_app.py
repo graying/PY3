@@ -1,29 +1,44 @@
 import random
-import sqlite3
 
-from flask import g, Flask, render_template, flash
+from flask import Flask, render_template, flash
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.secret_key = "thisisiskey"
-app.config["DEBUG"] = True
-app.database = "sample_sqlite3.db"
+# configurations are moved to config.py class BaseConfig
+# app.secret_key = "this_is_key"
+# app.config["DEBUG"] = True
+# app.database = "sample_sqlite3.db"
+# SQLALCHEMY_DATABASE_URI = "sqlite:///sample_SQLAlchemy.db"
+app.config.from_object("config.BaseConfig")
+db = SQLAlchemy(app)
+
+
+class Post(db.Model):
+    __tablename__ = "posts"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+
+    def __init__(self, title, description):
+        self.title = title
+        self.description = description
+
+    def __repr__(self):
+        return "{}".format(self.title)
 
 
 @app.route('/')
 def index():
     flash('Hello! you are in home page')
-    rint = random.randint(1, 1000)
-    flash(str(rint))
-    print(rint)
-    return render_template("index.html", randint=str(rint))
+    r = random.randint(1, 1000)
+    flash(str(r))
+    print(r)
+    return render_template("index.html", randint=str(r))
 
 
 @app.route("/show_db")
 def show_db():
-    g.db = sqlite3.connect("sample_sqlite3.db")
-    cur = g.db.execute("select * from posts")
-    posts = [dict(title=row[0], description=row[1]) for row in cur.fetchall()]
-    g.db.close()
+    posts = Post.query.all()
     flash("showing db content in show_db page")
     return render_template("show_db.html", posts=posts)
 

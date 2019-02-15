@@ -18,3 +18,8 @@ Good|I am good.
 Better|I am even better.
 sqlite> 
 '''
+
+'''
+this is an old way to create db from SQL command
+this is replaced with SQLAlchemy 
+'''
