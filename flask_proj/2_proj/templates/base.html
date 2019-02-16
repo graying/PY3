@@ -17,8 +17,9 @@
         </table>
     </div>
     <div id="menu" style="background-color:gray;height:700px;width:120px;float:left;">
-        <p><a href="/show_db">show_db<a/></p>
         <p><a href="/">home<a/></p>
+        <p><a href="/show_db">show_db<a/></p>
+        <p><a href="/add_post">add_post<a/></p>
     </div>
     <!--    <div id="container" style="background-color:white;height:700px;width:824px;float:left;">
         </div>
@@ -26,9 +27,9 @@
     {% block main_content %}
     {% endblock %}
 
-    <div id="footer" style="background-color:cyan;text-align:center;">
+    <div id="footer" style="background-color:red;text-align:left;">
         {% for message in get_flashed_messages() %}
-        {{ message }}
+        {{ message }}<br/>
         {% endfor %}
     </div>
 </div>

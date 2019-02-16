@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<strong>/add_post function with add_post.html</strong>
+
+<form action="/submit_post" method="post">
+    <table>
+        <tr>
+        <td>Title:</td>
+        <td><input type="text" name="title" required="true"/></td>
+        </tr>
+        <tr>
+        <td>Description:</td>
+        <td><textarea name="description" cols="80" rows="4" style="OVERFLOW:hidden"></textarea></td>
+        </tr>
+        <td><input type="submit" value="Submit"/></td>
+    </table>
+</form>
+
+{% endblock %}

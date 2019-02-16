@@ -1,6 +1,6 @@
 import random
 
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -41,6 +41,22 @@ def show_db():
     posts = Post.query.all()
     flash("showing db content in show_db page")
     return render_template("show_db.html", posts=posts)
+
+
+@app.route("/add_post", methods=["POST", "GET"])
+def add_post():
+    flash("input title/description ")
+    return render_template("add_post.html")
+
+
+@app.route("/submit_post", methods=["POST"])
+def submit_post():
+    title = request.form["title"]
+    description = request.form["description"]
+    db.session.add(Post(title, description))
+    db.session.commit()
+    flash("submitted your post and save in database")
+    return render_template("submit_post.html", title=title)
 
 
 if __name__ == "__main__":
